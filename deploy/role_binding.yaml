@@ -1,0 +1,13 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: customdomain-operator
+subjects:
+- kind: ServiceAccount
+  name: customdomain-operator
+# where the operator is deployed
+  namespace: test2
+roleRef:
+  kind: ClusterRole
+  name: customdomain-operator
+  apiGroup: rbac.authorization.k8s.io

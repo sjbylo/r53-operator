@@ -1,0 +1,18 @@
+# This role allows access to the any resource (e.g. customdomain) in the API group stable.example.com
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: access-customdomain
+rules:
+- apiGroups:
+  - stable.example.com
+  resources:
+  - '*'
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch

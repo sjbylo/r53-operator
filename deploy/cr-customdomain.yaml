@@ -1,0 +1,10 @@
+apiVersion: "stable.example.com/v1"
+kind: CustomDomain
+metadata:
+  name: mycustomdomain
+spec:
+  secret: cloud-credentials
+  zoneId: Z1NP923VDVV0P
+  hostedZoneName: paas.bylo.de
+  appsEndpoint: a9b8ffcaeae17459f897e02e1f423df6-1182473980.us-east-2.elb.amazonaws.com
+

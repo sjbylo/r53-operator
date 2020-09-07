@@ -1,0 +1,28 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: customdomain-operator
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - '*'
+#  - ingress
+#  - route
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - stable.example.com
+  resources:
+  - '*'
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customdomain-operator
+  labels:
+    name: customdomain-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: customdomain-operator
+  template:
+    metadata:
+      labels:
+        name: customdomain-operator
+    spec:
+      serviceAccountName: customdomain-operator
+      containers:
+        - name: customdomain-operator
+          # Replace this with the built image name
+          #image: quay.io/sjbylo/customdomain-operator:latest
+          image: quay.io/sjbylo/customdomain:dev
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              value: ""
+#              valueFrom:
+#                fieldRef:
+#                  fieldPath: ""
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: OPERATOR_NAME
+              value: "customdomain-operator"
+            - name: INTERVAL_MS
+              value: "4000"
+            - name: LOGLEVEL
+              value: "0"
